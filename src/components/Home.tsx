@@ -8,43 +8,14 @@ interface Pizza {
     name: string;
     toppings: string[];
     Favourite: string;
-    delivery: string;
+    delivery: boolean;
   }
 
 interface PizzaDataProps {
     pizzas: Pizza[];
   }
 
-  /*const PizzaData: React.FC<PizzaDataProps> = ({ pizzas }) => {
-    return(
-        <div className="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Pizza Name</th>
-                        <th> Toppings</th>
-                        <th>Favorite</th>
-                        <th>Delivery</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {pizzas.map((pizza) => 
-                        <tr key = {pizza.id}>
-                            <td>{pizza.id}</td>
-                            <td>{pizza.name}</td>
-                            <td>{pizza.toppings}</td>
-                            <td>{pizza.Favourite ? 'Yes':'No'}</td>
-                            <td>{pizza.delivery? 'Yes':'No'}</td>
-
-                        </tr>
-                    )}
-                </tbody>
-            </table>
-            <BackButton />
-        </div>
-    );
-};*/
+  
 
 
 const PizzaDataReact: React.FC<PizzaDataProps> = ({ pizzas }) => {
@@ -73,7 +44,7 @@ const PizzaDataReact: React.FC<PizzaDataProps> = ({ pizzas }) => {
         },
         {
             Header:"Delivery",accessor:"delivery",
-            Cell: ({ value }: { value: string }) => (value ? 'Yes' : 'No'),
+            Cell: ({ value }: { value: boolean }) => (value ? 'Yes' : 'No'),
         }
     ],
     []

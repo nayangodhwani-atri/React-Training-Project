@@ -6,11 +6,11 @@ interface Pizza {
   name: string;
   toppings: string[];
   Favourite: string;
-  delivery: string;
+  delivery: boolean;
 }
 
 interface PizzaFormProps {
-  setPizza: React.Dispatch<React.SetStateAction<Pizza[]>>; // Function to update pizza state
+  setPizza: React.Dispatch<React.SetStateAction<Pizza[]>>; 
 }
 
 const PizzaForm: React.FC<PizzaFormProps> = ({ setPizza }) => {
@@ -19,13 +19,14 @@ const PizzaForm: React.FC<PizzaFormProps> = ({ setPizza }) => {
   // Handle form submission
   const onSubmit = (data: Pizza) => {
     const newPizza: Pizza = {
-      id: Date.now(), // Use timestamp as a simple unique ID
+      id: data.id, 
       name: data.name,
-      toppings: data.toppings.map((topping: string) => topping.trim()), // Split toppings by commas
+      toppings: data.toppings.map((topping: string) => topping.trim()), 
       Favourite: data.Favourite,
       delivery: data.delivery,
     };
 
+    console.log(newPizza.name);
     // Update the pizza state with the new pizza
     setPizza((prevPizza) => [...prevPizza, newPizza]);
 
@@ -37,7 +38,7 @@ const PizzaForm: React.FC<PizzaFormProps> = ({ setPizza }) => {
     <div>
       <h3>Add a New Pizza</h3>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {/* Pizza Name */}
+        
         <label>
           Pizza Name:
           <Controller
@@ -51,7 +52,7 @@ const PizzaForm: React.FC<PizzaFormProps> = ({ setPizza }) => {
         {errors.name && <p>{errors.name.message}</p>}
         <br />
 
-        {/* Toppings */}
+        
         <label>
           Toppings (comma separated):
           <Controller
@@ -65,7 +66,7 @@ const PizzaForm: React.FC<PizzaFormProps> = ({ setPizza }) => {
         {errors.toppings && <p>{errors.toppings.message}</p>}
         <br />
 
-        {/* Favourite */}
+        
         <label>
           Favourite:
           <Controller
@@ -77,14 +78,14 @@ const PizzaForm: React.FC<PizzaFormProps> = ({ setPizza }) => {
         </label>
         <br />
 
-        {/* Delivery */}
+    
         <label>
           Delivery:
           <Controller
             name="delivery"
             control={control}
-            defaultValue={"No"}
-            render={({ field }) => <input type="checkbox" {...field} />}
+            defaultValue={false}
+            render={({ field }) => <input type="checkbox" {...field} checked={field.value} />}
           />
         </label>
         <br />

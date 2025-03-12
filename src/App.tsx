@@ -15,14 +15,14 @@ function App() {
     name: string;
     toppings: string[];
     Favourite: string;
-    delivery: string;
+    delivery: boolean;
   }
 
   const [pizza, setPizza] = useState<Pizza[]>([
 
-    {id: 1, name: 'Margherita', toppings:['Cheese'],Favourite:"Yes", delivery: "Yes"},
-    {id: 2, name: 'Pepperoni', toppings:['Black Olives'],Favourite:"Yes", delivery: "Yes"},
-    {id: 3, name: 'BBQ Chicken', toppings:['Beef'],Favourite:"Yes", delivery: "Yes"},
+    {id: 1, name: 'Margherita', toppings:['Cheese'],Favourite:"Yes", delivery: true},
+    {id: 2, name: 'Pepperoni', toppings:['Black Olives'],Favourite:"Yes", delivery: true},
+    {id: 3, name: 'BBQ Chicken', toppings:['Beef'],Favourite:"Yes", delivery: true},
 ]);
   return (
     
